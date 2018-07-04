@@ -1,10 +1,10 @@
 # 使用 node 8.11.1 作为基础镜像
-FROM registry.cn-hangzhou.aliyuncs.com/sovell-io/nginx-base:latest
+FROM node:8.11.3-slim
 
 # 安装nginx
-#RUN apt-get update \
-#		&& apt-get install -y nginx
-#
+RUN apt-get update \
+		&& apt-get install -y nginx
+
 # 指定工作目录
 WORKDIR /app
 
@@ -22,7 +22,7 @@ EXPOSE 80
 # 为了减小镜像体积，尽可能将一些同类操作，集成到一个步骤中，如下
 RUN npm install \
 		&& npm run build \
-		&& cp -r dist/* /usr/local/nginx/html \
+		&& cp -r dist/* /usr/share/nginx/html \
 		&& rm -rf /app
 
 # 以前台方式启动 nginx
