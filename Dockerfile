@@ -1,10 +1,10 @@
 # 使用 node 8.11.1 作为基础镜像
-FROM registry.cn-hangzhou.aliyuncs.com/test_ocker/test:latest
+FROM registry.cn-hangzhou.aliyuncs.com/sovell-io/nginx-base:latest
 
 # 安装nginx
-RUN apt-get update \
-		&& apt-get install -y nginx
-
+#RUN apt-get update \
+#		&& apt-get install -y nginx
+#
 # 指定工作目录
 WORKDIR /app
 
